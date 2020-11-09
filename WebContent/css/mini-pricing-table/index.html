@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>CodePen - Mini Pricing Table</title>
+
+  <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  <style>
+/*! normalize.css v3.0.2 | MIT License | git.io/normalize */html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}dfn{font-style:italic}h1{font-size:2em;margin:0.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box;height:0}pre{overflow:auto}code,kbd,pre,samp{font-family:monospace, monospace;font-size:1em}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type="checkbox"],input[type="radio"]{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:0}input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height:auto}input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:0.35em 0.625em 0.75em}legend{border:0;padding:0}textarea{overflow:auto}optgroup{font-weight:bold}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}
+
+</style>
+
+    <style>
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: #454c4f;
+  font: 1em/1.5 'Droid Sans', sans-serif;
+}
+
+.pricing {
+  -moz-transform: translate(-49%, -49.1%);
+  -ms-transform: translate(-49%, -49.1%);
+  -webkit-transform: translate(-49%, -49.1%);
+  transform: translate(-49%, -49.1%);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 310px;
+  font-size: 0;
+  opacity: 1;
+  transition: opacity .2s ease;
+}
+
+.price-option {
+  display: inline-block;
+  width: 6.25em;
+  vertical-align: middle;
+  margin-right: 0.3125em;
+  font-size: 16px;
+  opacity: 1;
+  transition: opacity .2s ease;
+}
+
+.price-option:last-child {
+  margin-right: 0;
+}
+
+.pricing:hover .price-option {
+  opacity: 0.6;
+}
+
+.pricing:hover .price-option:hover {
+  opacity: 1;
+}
+
+.price-option__detail {
+  padding: 2em 0;
+  background: white;
+  text-align: center;
+}
+
+.price-option--low .price-option__detail {
+  border-radius: .25em 0 0 0;
+}
+
+.price-option--mid .price-option__detail {
+  padding: 2.3em 0;
+  border-radius: .25em .25em 0 0;
+}
+
+.price-option--high .price-option__detail {
+  border-radius: 0 .25em 0 0;
+}
+
+.price-option__cost,
+.price-option__type {
+  display: block;
+}
+
+.price-option__cost {
+  font-size: 1.5em;
+  color: #383838;
+}
+
+.price-option__type {
+  font-size: .7em;
+  text-transform: uppercase;
+  color: #909090;
+}
+
+.price-option__purchase {
+  position: relative;
+  display: block;
+  padding: .6em;
+  font-size: .875em;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.price-option--low .price-option__purchase {
+  background: #a7d155;
+  border-radius: 0 0 0 .25em;
+}
+
+.price-option--mid .price-option__purchase {
+  background: #eada42;
+  border-radius: 0 0 .25em .25em;
+}
+
+.price-option--high .price-option__purchase {
+  background: #e54e4b;
+  border-radius: 0 0 .25em 0;
+}
+
+.price-option__purchase:before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  display: block;
+  width: 0;
+  height: 0;
+  margin-left: -5px;
+  border-width: 0 5px 5px;
+  border-style: solid;
+}
+
+.price-option--low .price-option__purchase:before {
+  border-color: transparent transparent #a7d155;
+}
+
+.price-option--mid .price-option__purchase:before {
+  border-color: transparent transparent #eada42;
+}
+
+.price-option--high .price-option__purchase:before {
+  border-color: transparent transparent #e54e4b;
+}
+
+</style>
+
+    <script src="js/prefixfree.min.js"></script>
+
+</head>
+
+<body>
+
+  <div class="pricing">
+  <div class="price-option price-option--low">
+    <div class="price-option__detail">
+      <span class="price-option__cost">$0</span>
+      <span class="price-option__type">Freeuser</span>
+    </div>
+    <a href="#" class="price-option__purchase">Get</a>
+  </div>
+  <div class="price-option price-option--mid">
+    <div class="price-option__detail">
+      <span class="price-option__cost">$20</span>
+      <span class="price-option__type">Poweruser</span>
+    </div>
+    <a href="#" class="price-option__purchase">Buy</a>
+  </div>
+  <div class="price-option price-option--high">
+    <div class="price-option__detail">
+      <span class="price-option__cost">$40</span>
+      <span class="price-option__type">Superuser</span>
+    </div>
+    <a href="#" class="price-option__purchase">Buy</a>
+  </div>
+</div>
+
+  <script src='http://codepen.io/assets/libs/fullpage/jquery.js'></script>
+
+</body>
+
+</html>
